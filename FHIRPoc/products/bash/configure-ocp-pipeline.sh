@@ -12,7 +12,7 @@
 #   - Logged into cluster on the OC CLI (https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html)
 #
 # PARAMETERS:
-#   -n : <namespace> (string), Defaults to 'cp4i'
+#   -n : <namespace> (string), Defaults to 'fhir-dev'
 #
 #   With defaults values
 #     ./configure-ocp-pipeline.sh
@@ -25,7 +25,7 @@ function usage() {
   exit 1
 }
 
-namespace="cp4i"
+namespace="fhir-dev"
 
 while getopts "n:" opt; do
   case ${opt} in
@@ -111,6 +111,10 @@ export password="$(oc -n ${namespace} serviceaccounts get-token image-bot)"
 echo -e "\nINFO: Adding permission for '$namespace' to write images to openshift local registry in the '$namespace'"
 oc -n ${namespace} policy add-role-to-user registry-editor system:serviceaccount:${namespace}:image-bot
 echo -e "\nCreating secret to push images to openshift local registry"
+echo $namespace 
+echo $DOCKER_REGISTRY
+echo $username
+echo $password
 oc create -n ${namespace} secret docker-registry cicd-${namespace} --docker-server=${DOCKER_REGISTRY} \
   --docker-username=${username} --docker-password=${password} -o yaml | oc apply -f -
 
