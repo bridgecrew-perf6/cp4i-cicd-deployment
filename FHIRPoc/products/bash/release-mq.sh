@@ -25,7 +25,7 @@
 #     ./release-mq.sh
 #
 #   Overriding the namespace and release-name
-#     ./release-mq -n cp4i -r mq-demo -i image-registry.openshift-image-registry.svc:5000/cp4i/mq-ddd -q mq-qm
+#     ./release-mq -n fhir-dev -r mq-fhir -i image-registry.openshift-image-registry.svc:5000/fhir-dev/mq-fhir -q QMGR
 
 function divider() {
   echo -e "\n-------------------------------------------------------------------------------------------------------------------\n"
