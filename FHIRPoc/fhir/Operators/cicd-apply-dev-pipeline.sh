@@ -65,7 +65,8 @@ done
 if [[ -z "${NAMESPACE// /}" ]]; then
   echo -e "$CROSS [ERROR] Namespace for fhir demo is empty. Please provide a value for '-n' parameter."
   MISSING_PARAMS="true"
-fi
+fi 
+ 
 
 if [[ -z "${REPO// /}" ]]; then
   echo -e "$CROSS [ERROR] Repository name parameter for dev pipeline of fhir demo is empty. Please provide a value for '-r' parameter."
