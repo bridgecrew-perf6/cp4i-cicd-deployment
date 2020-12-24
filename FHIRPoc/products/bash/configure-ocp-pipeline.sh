@@ -116,6 +116,7 @@ echo $DOCKER_REGISTRY
 echo $username
 echo $password
 oc create -n ${namespace} secret docker-registry cicd-${namespace} --docker-server=${DOCKER_REGISTRY} \
-  --docker-username=${username} --docker-password=${password} -o yaml | oc apply -f -
+  --docker-username=${username} --docker-password=${password} 
+  # -o yaml | oc apply -f -
 
 echo -e "\n----------------------------------------------------------------------------------------------------------------------------------------------------------\n"
